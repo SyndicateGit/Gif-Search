@@ -5,7 +5,7 @@ const input = document.querySelector("input");
 
 input.addEventListener('keypress', function(e){
   if(e.key == 'Enter'){
-    query = document.querySelector("input");
+    query = document.querySelector("input").value;
     requestGif(query)
     document.querySelector("input").value = '';
   }
