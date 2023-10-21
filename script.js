@@ -19,6 +19,8 @@ function requestGif(query){
   })
   .then(function(response) {
     img.src = response.data.images.original.url;
+    errorMsg = document.querySelector(".error");
+    errorMsg.textContent = "";
   })
   .catch(function(error){
     console.log(error)
