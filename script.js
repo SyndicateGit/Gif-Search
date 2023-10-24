@@ -16,7 +16,7 @@ async function requestGif(query){
     const img = document.querySelector('img');
     const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}=${query}`, {mode: 'cors'});
     
-    const gifJson = await request.json();
+    const gifJson = await response.json();
     
     img.src = gifJson.data.images.original.url;
     errorMsg = document.querySelector(".error");
