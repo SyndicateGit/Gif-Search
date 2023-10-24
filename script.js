@@ -11,23 +11,23 @@ input.addEventListener('keypress', function(e){
   }
 })
 
-function requestGif(query){
-  const img = document.querySelector('img');
-  fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}=${query}`, {mode: 'cors'})
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(response) {
-    img.src = response.data.images.original.url;
+async function requestGif(query){
+  try{
+    const img = document.querySelector('img');
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}=${query}`, {mode: 'cors'});
+    
+    const gifJson = await request.json();
+    
+    img.src = gifJson.data.images.original.url;
     errorMsg = document.querySelector(".error");
     errorMsg.textContent = "";
-  })
-  .catch(function(error){
+  } catch(error){
     console.log(error)
     errorMsg = document.querySelector(".error");
     errorMsg.textContent = error;
-  })
-  ;
+  }
+
 }
 
 requestGif(query);
+
